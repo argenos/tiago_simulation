@@ -6,13 +6,13 @@
     <arg name="public_sim" default="true"/>
     <arg name="map" default="$(find tiago_multi)/config/map"/>
 
-    <env name="GAZEBO_MODEL_PATH" value="$(find tiago_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+    <env name="GAZEBO_MODEL_PATH" value="$(find pal_gazebo_worlds)/models:$(optenv GAZEBO_MODEL_PATH)"/>
 
     <env name="LC_NUMERIC" value="C" />
 
     <!-- Gazebo start -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(find tiago_gazebo)/worlds/$(arg world).world"/>
+        <arg name="world_name" value="$(find pal_gazebo_worlds)/worlds/$(arg world).world"/>
         <arg name="gui" value="$(arg gui)"/>
         <arg name="debug" value="$(arg debug)"/>
     </include>
