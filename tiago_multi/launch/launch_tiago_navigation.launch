@@ -23,6 +23,7 @@
     <group ns="$(arg robot_name)">
         <arg name="gzpose" default="-x $(arg x_pose) -y $(arg y_pose) -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
         <node pkg="tf" type="static_transform_publisher" name="$(arg robot_name)_bc" args="0 0 0 0 0 0 1 /map $(arg robot_name)/map 100"/>
+         <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_base" args="0 0 0 0 0 0 $(arg robot_name)/odom base_footprint" /> 
 
         <!-- Write the pose in the pose.yaml used by amcl -->
         <node pkg="tiago_multi" type="pose_writing.sh" name="multi_pose_writing"
@@ -50,6 +51,7 @@
             <arg name="public_sim"  value="$(arg public_sim)"/>
             <arg name="robot_namespace" value="$(arg robot_name)"/>
             <arg if="$(eval arg('local_planner') == 'teb')" name="use_dynamic_footprint" value="true"/>
+            <arg name="multi"  value="multiple:=true namespace:=$(arg robot_name)"/>
         </include>
 
         <include file="$(find tiago_2dnav_gazebo)/launch/navigation.launch">
