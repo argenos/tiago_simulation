@@ -63,6 +63,9 @@
             <arg name="robot_namespace"      value="$(arg robot_name)"/>
             <arg name="multiple"       value="true"/>
         </include>
+
+        <include file="$(find waypoint_dispatcher)/launch/waypoint_dispatcher.launch">
+        </include>
         
         <node name="tuck_arm" pkg="tiago_gazebo" type="tuck_arm.py" output="screen"/>
     </group>
