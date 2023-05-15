@@ -67,6 +67,7 @@
         </include>
 
         <include file="$(find waypoint_dispatcher)/launch/waypoint_dispatcher.launch">
+            <arg name="frame" value="$(arg robot_name)/map"/>
         </include>
         
         <node name="tuck_arm" pkg="tiago_gazebo" type="tuck_arm.py" output="screen"/>
