@@ -21,13 +21,13 @@
     <arg name="local_planner"  default="$(eval 'teb' if arg('public_sim') else 'pal')"/> 
 
     <group ns="$(arg robot_name)">
-        <arg name="gzpose" default="-x $(arg x_pose) -y $(arg y_pose) -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
+        <!-- <arg name="gzpose" default="-x $(arg x_pose) -y $(arg y_pose) -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/> -->
         <node pkg="tf" type="static_transform_publisher" name="$(arg robot_name)_bc" args="0 0 0 0 0 0 1 /map $(arg robot_name)/map 100"/>
          <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_base" args="0 0 0 0 0 0 $(arg robot_name)/odom base_footprint" /> 
 
         <!-- Write the pose in the pose.yaml used by amcl -->
-        <node pkg="tiago_multi" type="pose_writing.sh" name="multi_pose_writing"
-              args="$(arg robot_name) $(arg x_pose) $(arg y_pose)" output="screen"/>
+        <!-- <node pkg="tiago_multi" type="pose_writing.sh" name="multi_pose_writing"
+              args="$(arg robot_name) $(arg x_pose) $(arg y_pose)" output="screen"/> -->
 
         <!-- spawn robot in simulation -->
         <include file="$(find tiago_gazebo)/launch/tiago_spawn.launch">
@@ -36,7 +36,7 @@
             <arg name="ft_sensor" value="$(arg ft_sensor)"/>
             <arg name="laser_model" value="$(arg laser_model)"/>
             <arg name="camera_model" value="$(arg camera_model)"/>
-            <arg name="gzpose" value="$(arg gzpose)"/>
+            <!-- <arg name="gzpose" value="$(arg gzpose)"/> -->
             <arg name="multi"  value="multiple:=true namespace:=$(arg robot_name)"/>
             <arg name="model_name" value="$(arg robot_name)"/>
         </include>

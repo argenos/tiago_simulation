@@ -5,7 +5,7 @@
   <arg name="ft_sensor"/>
   <arg name="laser_model"/>
   <arg name="camera_model"/>
-  <arg name="gzpose" default="-x 0 -y 0 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
+  <!-- <arg name="gzpose" default="-x 0 -y 0 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/> -->
   <arg name="multi" default=""/>
   <arg name="model_name" default="tiago"/>
   <arg name="base_type" default="pmb2"/>
@@ -49,7 +49,7 @@
   </include>
 
   <!-- Spawn robot in Gazebo -->
-  <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
-    args="-urdf -param robot_description $(arg gzpose) -model $(arg model_name)" />
+  <!-- <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
+    args="-urdf -param robot_description $(arg gzpose) -model $(arg model_name)" /> -->
 
 </launch>
